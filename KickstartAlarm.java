@@ -37,7 +37,7 @@ public class Solution {
 			for (int i = 1; i <= K; i++) {
 				// Contiguous Sub Arrays
 				for (int left = 0; left < N; left++) {
-					for (int right = 0; right < N; right++) {
+					for (int right = left; right < N; right++) {
 						int tmp = 1;
 						for (int gg = left; gg <= right; gg++) {
 							long tmp2 = A[gg]*modEx(tmp,i,mod);
