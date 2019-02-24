@@ -40,9 +40,9 @@ public class Solution {
 					for (int right = 0; right < N; right++) {
 						int tmp = 1;
 						for (int gg = left; gg <= right; gg++) {
-							long tmp2 = A[gg];
-							for (int hh = 0; hh < i; hh++)
-								tmp2 = (tmp2 * tmp) % mod;
+							long tmp2 = A[gg]*modEx(tmp,i,mod);
+							//for (int hh = 0; hh < i; hh++)
+								//tmp2 = (tmp2 * tmp) % mod;
 							POWER = (int) ((POWER + tmp2) % mod);
 							tmp++;
 						}
@@ -53,6 +53,20 @@ public class Solution {
 			System.out.println("Case #" + iii + ": " + POWER);
 		}
 		in.close();
+	}
+
+	//Modular exponentiation
+	//https://www.youtube.com/watch?v=nO7_qu2kd1Q
+	private static long modEx(long x, long n, long modu) {
+		if(n==0)
+			return 1;
+		else if(n%2==0) {
+			long y=modEx(x,n/2,modu);
+			return (y*y)%modu;
+		}
+		else {
+			return ((x%modu)*(modEx(x,n-1,modu)))%modu;
+		}
 	}
 
 }
